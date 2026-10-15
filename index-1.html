@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="referrer" content="no-referrer">
+<title>OTT Navigator Player — Android</title>
+<style>
+:root{color-scheme:dark;--bg:#0b0f14;--panel:#121923;--panel2:#182331;--line:#273547;--text:#eef4fb;--muted:#9aaabd;--accent:#4d9cff;--danger:#ff6b76;--good:#56d6a1;--radius:15px;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);min-height:100dvh}button,input{font:inherit}button{cursor:pointer;color:inherit;border:1px solid var(--line);background:var(--panel2);border-radius:10px;padding:10px 12px}button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}button:disabled{opacity:.5;cursor:not-allowed}.app{max-width:1500px;margin:auto;padding:12px;display:grid;grid-template-columns:190px minmax(250px,340px) minmax(0,1fr);gap:12px;min-height:100dvh}.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);min-width:0;overflow:hidden}.brand{font-size:17px;font-weight:800;padding:17px 14px;border-bottom:1px solid var(--line)}.brand small{display:block;font-size:11px;color:var(--muted);font-weight:500;margin-top:3px}.nav{padding:9px;display:grid;gap:6px}.nav button{text-align:left;background:transparent;border-color:transparent}.nav button.active,.nav button:hover{background:#20344a;border-color:#315276}.nav .settings{margin-top:12px}.side-note{font-size:12px;color:var(--muted);padding:12px;line-height:1.5}.list-panel{display:flex;flex-direction:column;min-height:0}.list-head{padding:14px;border-bottom:1px solid var(--line)}.head-row{display:flex;align-items:center;justify-content:space-between;gap:8px}.head-row h2{font-size:16px;margin:0}.count{font-size:12px;color:var(--muted)}.search{width:100%;margin-top:12px;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:#0c121a;color:var(--text)}.list-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.list-actions button{font-size:12px;padding:8px}.channel-list{overflow:auto;max-height:calc(100dvh - 170px);padding:7px}.channel{display:flex;gap:10px;align-items:center;padding:10px;border-radius:11px;border:1px solid transparent;cursor:pointer}.channel:hover{background:#192536}.channel.active{background:#1a3047;border-color:#2d5d8c}.logo{width:38px;height:38px;flex:0 0 38px;border-radius:9px;background:#24364a;display:grid;place-items:center;font-weight:800;color:#b7d8ff;overflow:hidden}.logo img{width:100%;height:100%;object-fit:contain}.ch-text{min-width:0;flex:1}.ch-name{font-size:14px;font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ch-group{font-size:11px;color:var(--muted);margin-top:3px}.star{border:0;background:transparent;padding:5px;color:#8b9bad;font-size:20px}.star.on{color:#ffd166}.main{display:flex;flex-direction:column;gap:12px;min-width:0}.player-panel{padding:12px}.player-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}.player-top h1{font-size:16px;margin:0;overflow-wrap:anywhere}.status{font-size:12px;color:var(--muted)}.video-wrap{position:relative;width:100%;aspect-ratio:16/9;background:#020407;border-radius:12px;overflow:hidden;display:grid;place-items:center}.video-wrap video,.video-wrap iframe{width:100%;height:100%;border:0;background:#000}.placeholder{padding:20px;text-align:center;color:var(--muted);max-width:460px}.placeholder strong{display:block;color:var(--text);margin-bottom:8px}.player-controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.player-controls input{flex:1;min-width:150px;background:#0b1118;border:1px solid var(--line);border-radius:10px;padding:10px;color:var(--text)}.player-controls button.primary{background:var(--accent);color:#07111d;border-color:var(--accent);font-weight:700}.epg-panel{padding:14px}.epg-panel h2{font-size:15px;margin:0 0 10px}.epg-now{font-weight:700}.epg-sub{font-size:12px;color:var(--muted);margin-top:4px}.epg-next{margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}.progress{height:5px;background:#263444;border-radius:9px;margin-top:10px;overflow:hidden}.progress span{display:block;height:100%;background:var(--accent);width:0}.message{padding:10px 12px;border-radius:10px;background:#182331;color:var(--muted);font-size:13px;line-height:1.45;white-space:pre-wrap}.message.error{color:#ffd0d4;border:1px solid #6e303a;background:#29171c}.message.success{color:#baf5dc;border:1px solid #235c48;background:#11251e}.settings-panel{padding:14px;display:grid;gap:12px}.settings-panel h2{font-size:17px;margin:0}.field{display:grid;gap:6px}.field label{font-size:13px;color:var(--muted)}.field input{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;background:#0b1118;color:var(--text)}.hint{font-size:12px;color:var(--muted);line-height:1.5}.hidden{display:none!important}.empty{padding:22px 12px;text-align:center;color:var(--muted);font-size:13px;line-height:1.5}.mobile-menu{display:none}.footer-note{font-size:11px;color:var(--muted);line-height:1.5;margin-top:auto;padding:12px}
+@media(max-width:900px){.app{grid-template-columns:1fr;min-height:100dvh;padding:8px;gap:8px}.nav-panel{order:0}.nav-panel .brand{padding:12px}.nav{display:flex;overflow-x:auto;padding:7px}.nav button{white-space:nowrap;padding:9px 11px}.nav .settings{margin:0}.side-note{display:none}.list-panel{order:2}.main{order:1}.channel-list{max-height:40dvh}.player-panel{padding:9px}.player-top h1{font-size:15px}.video-wrap{aspect-ratio:16/9}.settings-panel{padding:12px}}
+@media(max-width:420px){.player-controls{gap:6px}.player-controls button{padding:9px;font-size:13px}.head-row h2{font-size:15px}.logo{width:34px;height:34px;flex-basis:34px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="panel nav-panel" aria-label="เมนูหลัก">
+    <div class="brand">OTT Navigator <small>เว็บเพลเยอร์ · Android</small></div>
+    <nav class="nav">
+      <button class="active" data-view="all" type="button">▣ ทีวีสด</button>
+      <button data-view="favorites" type="button">☆ รายการโปรด</button>
+      <button data-view="settings" class="settings" type="button">⚙ ตั้งค่า</button>
+    </nav>
+    <div class="side-note">ใช้กับเพลย์ลิสต์และสตรีมที่คุณมีสิทธิ์รับชมเท่านั้น</div>
+  </aside>
+
+  <section class="panel list-panel" id="listPanel" aria-label="รายการช่อง">
+    <div class="list-head">
+      <div class="head-row"><h2 id="listTitle">ช่องทีวี</h2><span class="count" id="channelCount">0 ช่อง</span></div>
+      <input class="search" id="searchInput" type="search" placeholder="ค้นหาช่องหรือหมวดหมู่…" aria-label="ค้นหาช่อง">
+      <div class="list-actions">
+        <button id="loadFileBtn" type="button">เลือกไฟล์ M3U</button>
+        <button id="demoBtn" type="button">ทดสอบวิดีโอ</button>
+        <input id="fileInput" type="file" accept=".m3u,.m3u8,.txt,application/vnd.apple.mpegurl,audio/mpegurl,text/plain" class="hidden" aria-label="เลือกไฟล์ M3U">
+      </div>
+    </div>
+    <div id="channelList" class="channel-list"><div class="empty">ยังไม่มีช่อง<br>เลือกไฟล์ M3U หรือเปิดตั้งค่าเพื่อใส่ URL เพลย์ลิสต์</div></div>
+  </section>
+
+  <main class="main" id="mainView">
+    <section class="panel player-panel">
+      <div class="player-top"><div><h1 id="nowPlayingTitle">ยังไม่ได้เลือกช่อง</h1><div class="status" id="playerStatus" role="status" aria-live="polite">พร้อมใช้งาน</div></div><button id="stopBtn" type="button">หยุด</button></div>
+      <div class="video-wrap" id="videoWrap">
+        <div class="placeholder" id="playerPlaceholder"><strong>OTT Navigator Player</strong>นำเข้า M3U แล้วเลือกช่องเพื่อเล่น หรือกด “ทดสอบวิดีโอ” เพื่อตรวจเครื่องเล่น</div>
+        <video id="video" controls playsinline preload="metadata" class="hidden"></video>
+        <iframe id="youtubeFrame" class="hidden" title="YouTube player" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="no-referrer" allowfullscreen></iframe>
+      </div>
+      <div class="player-controls">
+        <input id="directUrl" type="url" inputmode="url" autocomplete="off" placeholder="วาง URL สตรีม .m3u8 / .mp4 / YouTube" aria-label="URL สตรีม">
+        <button class="primary" id="playUrlBtn" type="button">เล่น URL</button>
+      </div>
+      <div id="appMessage" class="message" role="status" aria-live="polite" style="margin-top:10px">พร้อมเล่นสตรีมที่รองรับ</div>
+    </section>
+    <section class="panel epg-panel">
+      <h2>รายการทีวี (EPG)</h2>
+      <div class="epg-now" id="epgNow">ยังไม่มีข้อมูลรายการ</div>
+      <div class="epg-sub" id="epgNowTime">นำเข้าไฟล์ XMLTV ในหน้าตั้งค่าเพื่อแสดง EPG</div>
+      <div class="progress"><span id="epgProgress"></span></div>
+      <div class="epg-next"><div class="epg-sub">รายการถัดไป</div><div id="epgNext">—</div><div class="epg-sub" id="epgNextTime"></div></div>
+    </section>
+  </main>
+
+  <section class="panel settings-panel hidden" id="settingsView">
+    <h2>ตั้งค่าเพลย์ลิสต์และ EPG</h2>
+    <div class="field"><label for="playlistUrl">URL เพลย์ลิสต์ M3U/M3U8</label><input id="playlistUrl" type="url" inputmode="url" placeholder="https://example.com/playlist.m3u" autocomplete="off"></div>
+    <button id="loadPlaylistBtn" class="primary" type="button">โหลดเพลย์ลิสต์</button>
+    <div class="field"><label for="xmltvUrl">URL XMLTV (ไม่บังคับ)</label><input id="xmltvUrl" type="url" inputmode="url" placeholder="https://example.com/guide.xml" autocomplete="off"></div>
+    <label class="hint" style="display:flex;gap:8px;align-items:flex-start"><input id="rememberUrls" type="checkbox" style="margin-top:3px;width:auto"> จำ URL บนเครื่องนี้ (ไม่แนะนำหาก URL มีรหัสผ่านหรือ token)</label>
+    <div class="list-actions"><button id="loadEpgBtn" type="button">โหลด EPG จาก URL</button><button id="loadXmltvFileBtn" type="button">เลือกไฟล์ XMLTV</button><input id="xmltvFileInput" type="file" accept=".xml,.xmltv,application/xml,text/xml" class="hidden" aria-label="เลือกไฟล์ XMLTV"></div>
+    <div class="hint">ข้อจำกัด: URL ภายนอกอาจโหลดไม่ได้หากเซิร์ฟเวอร์ไม่อนุญาต CORS, ต้องล็อกอิน, หรือบล็อกเบราว์เซอร์ หากมีข้อมูลลับใน URL อย่าแชร์ภาพหน้าจอหรือบันทึก URL ไว้ในอุปกรณ์สาธารณะ</div>
+    <button id="backBtn" type="button">กลับไปยังเครื่องเล่น</button>
+    <div id="settingsMessage" class="message">ยังไม่มีการโหลดข้อมูลจากภายนอก</div>
+  </section>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.17/dist/hls.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+(() => {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const state = { channels: [], favorites: new Set(), view: 'all', selectedId: null, hls: null, epgByChannel: new Map(), loading: false };
+  const video = $('video');
+  const MAX_PLAYLIST_BYTES = 8 * 1024 * 1024;
+  const MAX_XML_BYTES = 20 * 1024 * 1024;
+  const DEMO_URL = 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8';
+
+  function message(text, kind = '') { const el = $('appMessage'); el.textContent = text; el.className = 'message' + (kind ? ' ' + kind : ''); }
+  function settingsMessage(text, kind = '') { const el = $('settingsMessage'); el.textContent = text; el.className = 'message' + (kind ? ' ' + kind : ''); }
+  function status(text) { $('playerStatus').textContent = text; }
+  function safeHttpUrl(raw) {
+    try { const u = new URL(String(raw).trim()); if (u.protocol !== 'https:' && u.protocol !== 'http:') return null; if (!u.hostname) return null; return u.href; }
+    catch { return null; }
+  }
+  function safeImageUrl(raw) { const u = safeHttpUrl(raw); return u || ''; }
+  function textOnly(value, max = 300) { return String(value ?? '').replace(/[\u0000-\u001f\u007f]/g, ' ').trim().slice(0, max); }
+  function stableId(ch) { return ((ch.tvgId || '') + '|' + (ch.name || '').toLowerCase() + '|' + (ch.url || '')).slice(0, 1200); }
+  function loadFavorites() {
+    try { const arr = JSON.parse(localStorage.getItem('ott-nav-favorites-v1') || '[]'); if (Array.isArray(arr)) state.favorites = new Set(arr.filter(x => typeof x === 'string').slice(0, 5000)); }
+    catch { state.favorites = new Set(); }
+  }
+  function saveFavorites() { try { localStorage.setItem('ott-nav-favorites-v1', JSON.stringify([...state.favorites].slice(0, 5000))); } catch { message('บันทึกรายการโปรดไม่ได้ พื้นที่จัดเก็บอาจถูกปิดไว้', 'error'); } }
+  function loadSettings() { try { const v = JSON.parse(localStorage.getItem('ott-nav-settings-v1') || '{}'); if (v && typeof v === 'object' && v.remember === true) { $('rememberUrls').checked = true; if (typeof v.playlistUrl === 'string') $('playlistUrl').value = v.playlistUrl.slice(0, 4000); if (typeof v.xmltvUrl === 'string') $('xmltvUrl').value = v.xmltvUrl.slice(0, 4000); } } catch {} }
+  function saveSettings() { try { if (!$('rememberUrls').checked) { localStorage.removeItem('ott-nav-settings-v1'); return; } localStorage.setItem('ott-nav-settings-v1', JSON.stringify({ remember: true, playlistUrl: $('playlistUrl').value.trim().slice(0, 4000), xmltvUrl: $('xmltvUrl').value.trim().slice(0, 4000) })); } catch { settingsMessage('บันทึกการตั้งค่าไม่ได้ในโหมดนี้ แต่ยังใช้งานต่อได้', 'error'); } }
+  function escapeRegExp(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+
+  function parseM3U(source) {
+    if (typeof source !== 'string' || source.length > MAX_PLAYLIST_BYTES) throw new Error('ไฟล์เพลย์ลิสต์ใหญ่เกินขนาดที่กำหนด (8 MB)');
+    const lines = source.replace(/^\uFEFF/, '').split(/\r?\n/);
+    if (!lines.some(line => line.trim().startsWith('#EXTM3U'))) throw new Error('ไฟล์นี้ไม่พบหัวข้อ #EXTM3U จึงอาจไม่ใช่เพลย์ลิสต์ M3U');
+    const out = []; let meta = null;
+    for (const rawLine of lines) {
+      const line = rawLine.trim(); if (!line) continue;
+      if (line.startsWith('#EXTINF:')) {
+        const comma = line.indexOf(','); const attrs = comma >= 0 ? line.slice(0, comma) : line; const name = comma >= 0 ? line.slice(comma + 1).trim() : 'ช่องไม่ระบุชื่อ';
+        const attr = key => { const re = new RegExp('(?:^|\\s)' + escapeRegExp(key) + '="([^"]*)"', 'i'); const m = attrs.match(re); return m ? textOnly(m[1], 500) : ''; };
+        meta = { name: textOnly(name || attr('tvg-name') || 'ช่องไม่ระบุชื่อ', 200), tvgId: attr('tvg-id'), logo: safeImageUrl(attr('tvg-logo')), group: attr('group-title') || 'ไม่จัดหมวดหมู่' };
+      } else if (!line.startsWith('#') && meta) {
+        const url = safeHttpUrl(line);
+        if (url) out.push({ ...meta, url, id: '', epgNow: '', epgNowTime: '', epgNext: '', epgNextTime: '' });
+        meta = null;
+        if (out.length >= 10000) throw new Error('มีช่องมากเกินไป (สูงสุด 10,000 ช่อง)');
+      }
+    }
+    const seen = new Map();
+    for (const ch of out) { const base = stableId(ch); const n = (seen.get(base) || 0) + 1; seen.set(base, n); ch.id = base + '#' + n; }
+    return out;
+  }
+
+  function renderChannels() {
+    const query = $('searchInput').value.trim().toLocaleLowerCase();
+    const channels = state.channels.filter(ch => (state.view !== 'favorites' || state.favorites.has(stableId(ch))) && (!query || (ch.name + ' ' + ch.group + ' ' + ch.tvgId).toLocaleLowerCase().includes(query)));
+    $('channelCount').textContent = channels.length + ' ช่อง';
+    $('listTitle').textContent = state.view === 'favorites' ? 'รายการโปรด' : 'ช่องทีวี';
+    const root = $('channelList'); root.replaceChildren();
+    if (!channels.length) { const empty = document.createElement('div'); empty.className = 'empty'; empty.textContent = state.view === 'favorites' ? 'ยังไม่มีรายการโปรด หรือไม่พบผลการค้นหา' : 'ไม่พบช่อง ลองค้นหาด้วยคำอื่นหรือนำเข้า M3U'; root.append(empty); return; }
+    const frag = document.createDocumentFragment();
+    for (const ch of channels) {
+      const item = document.createElement('div'); item.className = 'channel' + (state.selectedId === ch.id ? ' active' : ''); item.tabIndex = 0; item.setAttribute('role', 'button'); item.setAttribute('aria-label', 'เล่น ' + ch.name);
+      item.addEventListener('click', () => selectChannel(ch)); item.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectChannel(ch); } });
+      const logo = document.createElement('div'); logo.className = 'logo'; logo.textContent = ch.name.slice(0, 1).toUpperCase();
+      if (ch.logo) { const img = document.createElement('img'); img.loading = 'lazy'; img.alt = ''; img.referrerPolicy = 'no-referrer'; img.src = ch.logo; img.addEventListener('error', () => { img.remove(); }); logo.replaceChildren(img); }
+      const info = document.createElement('div'); info.className = 'ch-text'; const name = document.createElement('div'); name.className = 'ch-name'; name.textContent = ch.name; const group = document.createElement('div'); group.className = 'ch-group'; group.textContent = ch.group; info.append(name, group);
+      const fav = document.createElement('button'); fav.className = 'star' + (state.favorites.has(stableId(ch)) ? ' on' : ''); fav.type = 'button'; fav.textContent = state.favorites.has(stableId(ch)) ? '★' : '☆'; fav.setAttribute('aria-label', state.favorites.has(stableId(ch)) ? 'นำออกจากรายการโปรด' : 'เพิ่มในรายการโปรด'); fav.addEventListener('click', e => { e.stopPropagation(); toggleFavorite(ch); });
+      item.append(logo, info, fav); frag.append(item);
+    }
+    root.append(frag);
+  }
+  function toggleFavorite(ch) { const id = stableId(ch); if (state.favorites.has(id)) state.favorites.delete(id); else state.favorites.add(id); saveFavorites(); renderChannels(); }
+
+  function destroyPlayer() {
+    if (state.hls) { try { state.hls.destroy(); } catch {} state.hls = null; }
+    video.pause(); video.removeAttribute('src'); video.load(); video.classList.add('hidden');
+    $('youtubeFrame').src = 'about:blank'; $('youtubeFrame').classList.add('hidden');
+  }
+  function showPlaceholder(text) { $('playerPlaceholder').classList.remove('hidden'); $('playerPlaceholder').querySelector('strong').textContent = 'OTT Navigator Player'; $('playerPlaceholder').lastChild.textContent = text; }
+  function youtubeEmbed(raw) {
+    try { const u = new URL(raw); let id = ''; if (u.hostname === 'youtu.be') id = u.pathname.slice(1); else if (['youtube.com','www.youtube.com','m.youtube.com','youtube-nocookie.com','www.youtube-nocookie.com'].includes(u.hostname)) { if (u.pathname === '/watch') id = u.searchParams.get('v') || ''; else { const m = u.pathname.match(/^\/(?:embed|shorts)\/([\w-]{6,})/); if (m) id = m[1]; } } return /^[\w-]{6,20}$/.test(id) ? id : ''; } catch { return ''; }
+  }
+  async function playUrl(raw) {
+    const url = safeHttpUrl(raw); if (!url) { message('URL ไม่ถูกต้อง: รองรับเฉพาะ HTTP/HTTPS', 'error'); status('URL ไม่ถูกต้อง'); return; }
+    destroyPlayer(); $('playerPlaceholder').classList.add('hidden'); status('กำลังเปิดสตรีม…'); message('กำลังเชื่อมต่อสตรีม');
+    const yt = youtubeEmbed(url);
+    if (yt) { const frame = $('youtubeFrame'); frame.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(yt) + '?autoplay=1&playsinline=1'; frame.classList.remove('hidden'); status('YouTube'); message('ส่ง URL ให้ YouTube player แล้ว หากเล่นไม่ได้อาจเป็นเพราะเจ้าของวิดีโอปิดการฝัง'); return; }
+    video.classList.remove('hidden');
+    const isHls = /\.m3u8(?:$|[?#])/i.test(url);
+    if (isHls && window.Hls && Hls.isSupported()) {
+      const hls = new Hls({ enableWorker: true, lowLatencyMode: false, backBufferLength: 30 }); state.hls = hls;
+      hls.on(Hls.Events.MEDIA_ATTACHED, () => hls.loadSource(url));
+      hls.on(Hls.Events.MANIFEST_PARSED, async () => { try { await video.play(); } catch { status('พร้อมเล่น — กดปุ่มเล่น'); message('สตรีมโหลดแล้ว แต่เบราว์เซอร์ไม่อนุญาตให้เล่นอัตโนมัติ กรุณากดปุ่มเล่น', ''); } });
+      hls.on(Hls.Events.ERROR, (_event, data) => { if (data && data.fatal) { status('เล่นสตรีมไม่สำเร็จ'); message('HLS error: ' + textOnly(data.details || data.type || 'unknown', 160) + '. ตรวจ URL, CORS, token, codec หรือสิทธิ์เข้าถึง', 'error'); try { hls.destroy(); } catch {} if (state.hls === hls) state.hls = null; } });
+      hls.attachMedia(video);
+    } else if (isHls && video.canPlayType('application/vnd.apple.mpegurl')) {
+      video.src = url;
+      try { await video.play(); } catch { status('พร้อมเล่น — กดปุ่มเล่น'); message('โหลด URL แล้ว แต่ต้องกดปุ่มเล่นเอง หรือสตรีมอาจไม่พร้อม', ''); }
+    } else if (isHls) {
+      video.classList.add('hidden'); showPlaceholder('เบราว์เซอร์นี้ไม่รองรับ HLS โดยตรง และ hls.js ไม่พร้อมใช้งาน. ตรวจการเชื่อมต่ออินเทอร์เน็ตหรือเปิดผ่านเว็บเซิร์ฟเวอร์ HTTPS.'); status('ไม่รองรับ HLS'); message('ไม่พบตัวถอดรหัส HLS ที่ใช้งานได้', 'error'); return;
+    } else {
+      video.src = url;
+      try { await video.play(); } catch { status('พร้อมเล่น — กดปุ่มเล่น'); message('โหลด URL แล้ว แต่เบราว์เซอร์ไม่อนุญาตให้เล่นอัตโนมัติ หรือรูปแบบสตรีมไม่รองรับ', ''); }
+    }
+  }
+  async function selectChannel(ch) {
+    state.selectedId = ch.id; $('nowPlayingTitle').textContent = ch.name; $('directUrl').value = ch.url; renderChannels(); updateEPG(ch); await playUrl(ch.url);
+  }
+  function loadDemo() { const ch = { name: 'ตัวอย่าง HLS (ทดสอบเครื่องเล่น)', tvgId: '', logo: '', group: 'ทดสอบ', url: DEMO_URL, id: 'demo-mux-test', epgNow: '', epgNowTime: '', epgNext: '', epgNextTime: '' }; if (!state.channels.some(c => c.id === ch.id)) state.channels.unshift(ch); $('searchInput').value = ''; state.view = 'all'; showView('all'); selectChannel(ch); message('ใช้สตรีมตัวอย่างสาธารณะเพื่อทดสอบเท่านั้น หากเครือข่ายบล็อกอาจเล่นไม่ได้', ''); }
+
+  async function fetchText(urlRaw, maxBytes) {
+    const url = safeHttpUrl(urlRaw); if (!url) throw new Error('URL ไม่ถูกต้อง ต้องเป็น HTTP/HTTPS');
+    const controller = new AbortController(); const timer = setTimeout(() => controller.abort(), 25000);
+    try {
+      const res = await fetch(url, { signal: controller.signal, credentials: 'omit', cache: 'no-store', redirect: 'follow' });
+      if (!res.ok) throw new Error('HTTP ' + res.status + ' ' + res.statusText);
+      const finalUrl = safeHttpUrl(res.url); if (!finalUrl) throw new Error('ปลายทาง redirect ไป URL ที่ไม่อนุญาต');
+      const declared = Number(res.headers.get('content-length') || 0); if (declared > maxBytes) throw new Error('ไฟล์ใหญ่เกินขนาดที่กำหนด');
+      if (!res.body || !res.body.getReader) { const text = await res.text(); if (new Blob([text]).size > maxBytes) throw new Error('ไฟล์ใหญ่เกินขนาดที่กำหนด'); return text; }
+      const reader = res.body.getReader(); const chunks = []; let total = 0;
+      try { while (true) { const part = await reader.read(); if (part.done) break; total += part.value.byteLength; if (total > maxBytes) { await reader.cancel(); throw new Error('ไฟล์ใหญ่เกินขนาดที่กำหนด'); } chunks.push(part.value); } }
+      finally { try { reader.releaseLock(); } catch {} }
+      const merged = new Uint8Array(total); let offset = 0; for (const chunk of chunks) { merged.set(chunk, offset); offset += chunk.byteLength; } return new TextDecoder('utf-8', { fatal: false }).decode(merged);
+    } catch (e) { if (e.name === 'AbortError') throw new Error('หมดเวลารอโหลด 25 วินาที'); if (e instanceof TypeError) throw new Error('โหลดไม่สำเร็จ อาจเป็น CORS, DNS หรือปัญหาเครือข่าย'); throw e; }
+    finally { clearTimeout(timer); }
+  }
+  async function loadPlaylistUrl() {
+    if (state.loading) return; const url = $('playlistUrl').value.trim(); if (!safeHttpUrl(url)) { settingsMessage('กรุณาใส่ URL เพลย์ลิสต์ HTTP/HTTPS ที่ถูกต้อง', 'error'); return; } saveSettings();
+    state.loading = true; settingsMessage('กำลังโหลดเพลย์ลิสต์…');
+    try { const text = await fetchText(url, MAX_PLAYLIST_BYTES); const parsed = parseM3U(text); if (!parsed.length) throw new Error('ไม่พบรายการช่องที่มี URL HTTP/HTTPS'); state.channels = parsed; state.selectedId = null; state.epgByChannel.clear(); renderChannels(); settingsMessage('โหลดสำเร็จ: ' + parsed.length + ' ช่อง', 'success'); showView('all'); $('nowPlayingTitle').textContent = 'เลือกช่องเพื่อเริ่มเล่น'; status('โหลดเพลย์ลิสต์แล้ว'); message('โหลดช่องสำเร็จ ' + parsed.length + ' ช่อง เลือกช่องเพื่อเล่น', 'success'); }
+    catch (e) { settingsMessage('โหลดเพลย์ลิสต์ไม่สำเร็จ: ' + textOnly(e.message, 400), 'error'); }
+    finally { state.loading = false; }
+  }
+  async function loadPlaylistFile(file) {
+    if (!file) return; if (file.size > MAX_PLAYLIST_BYTES) { message('ไฟล์ใหญ่เกินขนาดที่กำหนด (8 MB)', 'error'); return; }
+    try { const parsed = parseM3U(await file.text()); if (!parsed.length) throw new Error('ไม่พบช่องที่มี URL HTTP/HTTPS'); state.channels = parsed; state.selectedId = null; state.epgByChannel.clear(); renderChannels(); showView('all'); message('นำเข้าไฟล์สำเร็จ ' + parsed.length + ' ช่อง', 'success'); status('นำเข้าไฟล์แล้ว'); }
+    catch (e) { message('อ่านไฟล์ไม่สำเร็จ: ' + textOnly(e.message, 300), 'error'); }
+  }
+
+  function parseXmltv(xmlText) {
+    if (xmlText.length > MAX_XML_BYTES) throw new Error('ไฟล์ XMLTV ใหญ่เกิน 20 MB');
+    if (/<!DOCTYPE/i.test(xmlText)) throw new Error('ปฏิเสธ XML ที่มี DOCTYPE เพื่อความปลอดภัย');
+    const doc = new DOMParser().parseFromString(xmlText, 'application/xml');
+    if (doc.querySelector('parsererror') || doc.documentElement.nodeName !== 'tv') throw new Error('รูปแบบ XMLTV ไม่ถูกต้อง');
+    const map = new Map(); const now = Date.now();
+    for (const p of Array.from(doc.getElementsByTagName('programme')).slice(0, 100000)) {
+      const channel = p.getAttribute('channel'); const start = parseXmlDate(p.getAttribute('start')); const stop = parseXmlDate(p.getAttribute('stop')); if (!channel || !start || !stop || stop <= start) continue;
+      const title = textOnly(p.querySelector('title')?.textContent || 'ไม่มีชื่อรายการ', 200); const item = { start, stop, title };
+      if (!map.has(channel)) map.set(channel, []); map.get(channel).push(item);
+    }
+    for (const [id, items] of map) items.sort((a,b) => a.start-b.start);
+    return map;
+  }
+  function parseXmlDate(value) { const s = String(value || '').trim(); const m = s.match(/^(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})(?:\s*([+-])(\d{2})(\d{2}))?/); if (!m) return 0; const iso = `${m[1]}-${m[2]}-${m[3]}T${m[4]}:${m[5]}:${m[6]}${m[7] ? m[7]+m[8]+':'+m[9] : 'Z'}`; const t = Date.parse(iso); return Number.isFinite(t) ? t : 0; }
+  function fmtTime(t) { return new Intl.DateTimeFormat('th-TH', { hour: '2-digit', minute: '2-digit', day: 'numeric', month: 'short' }).format(new Date(t)); }
+  function updateEPG(ch) {
+    const id = ch?.tvgId; const items = id ? state.epgByChannel.get(id) || [] : [];
+    const now = Date.now(); const current = items.find(p => p.start <= now && p.stop > now); const next = items.find(p => p.start > now);
+    $('epgNow').textContent = current ? current.title : 'ยังไม่มีข้อมูลรายการปัจจุบัน'; $('epgNowTime').textContent = current ? fmtTime(current.start) + ' – ' + fmtTime(current.stop) : (id ? 'ไม่พบรายการที่ตรงกับ tvg-id: ' + id : 'ช่องนี้ไม่มี tvg-id สำหรับจับคู่ EPG');
+    $('epgNext').textContent = next ? next.title : '—'; $('epgNextTime').textContent = next ? fmtTime(next.start) + ' – ' + fmtTime(next.stop) : '';
+    $('epgProgress').style.width = current ? Math.max(0, Math.min(100, (now-current.start)/(current.stop-current.start)*100)) + '%' : '0%';
+  }
+  async function loadEpgFile(file) {
+    if (!file) return; if (file.size > MAX_XML_BYTES) { settingsMessage('ไฟล์ XMLTV ใหญ่เกิน 20 MB', 'error'); return; }
+    try { const xml = await file.text(); const parsed = parseXmltv(xml); state.epgByChannel = parsed; const ch = state.channels.find(c => c.id === state.selectedId); if (ch) updateEPG(ch); settingsMessage('นำเข้า XMLTV สำเร็จ: ' + parsed.size + ' รหัสช่อง', 'success'); }
+    catch (e) { settingsMessage('อ่าน XMLTV ไม่สำเร็จ: ' + textOnly(e.message, 400), 'error'); }
+  }
+  async function loadEpgUrl() {
+    const url = $('xmltvUrl').value.trim(); if (!safeHttpUrl(url)) { settingsMessage('กรุณาใส่ URL XMLTV HTTP/HTTPS ที่ถูกต้อง', 'error'); return; } saveSettings(); settingsMessage('กำลังโหลด EPG…');
+    try { const xml = await fetchText(url, MAX_XML_BYTES); const parsed = parseXmltv(xml); state.epgByChannel = parsed; if (state.selectedId) { const ch = state.channels.find(c => c.id === state.selectedId); if (ch) updateEPG(ch); } settingsMessage('โหลด EPG สำเร็จ: ' + parsed.size + ' รหัสช่อง', 'success'); }
+    catch (e) { settingsMessage('โหลด EPG ไม่สำเร็จ: ' + textOnly(e.message, 400), 'error'); }
+  }
+  function showView(view) {
+    state.view = view; document.querySelectorAll('[data-view]').forEach(b => b.classList.toggle('active', b.dataset.view === view));
+    const settings = view === 'settings'; $('settingsView').classList.toggle('hidden', !settings); $('mainView').classList.toggle('hidden', settings); $('listPanel').classList.toggle('hidden', settings); renderChannels();
+  }
+
+  $('loadFileBtn').addEventListener('click', () => $('fileInput').click());
+  $('fileInput').addEventListener('change', e => { loadPlaylistFile(e.target.files?.[0]); e.target.value = ''; });
+  $('demoBtn').addEventListener('click', loadDemo);
+  $('searchInput').addEventListener('input', renderChannels);
+  $('playUrlBtn').addEventListener('click', () => playUrl($('directUrl').value));
+  $('directUrl').addEventListener('keydown', e => { if (e.key === 'Enter') playUrl($('directUrl').value); });
+  $('stopBtn').addEventListener('click', () => { destroyPlayer(); showPlaceholder('หยุดเล่นแล้ว เลือกช่องหรือใส่ URL เพื่อเล่นต่อ'); status('หยุดแล้ว'); message('หยุดการเล่นแล้ว'); });
+  $('loadPlaylistBtn').addEventListener('click', loadPlaylistUrl);
+  $('loadEpgBtn').addEventListener('click', loadEpgUrl);
+  $('loadXmltvFileBtn').addEventListener('click', () => $('xmltvFileInput').click());
+  $('xmltvFileInput').addEventListener('change', e => { loadEpgFile(e.target.files?.[0]); e.target.value = ''; });
+  $('playlistUrl').addEventListener('change', saveSettings);
+  $('xmltvUrl').addEventListener('change', saveSettings);
+  $('rememberUrls').addEventListener('change', saveSettings);
+  $('backBtn').addEventListener('click', () => showView('all'));
+  document.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => showView(b.dataset.view)));
+  video.addEventListener('playing', () => { status('กำลังเล่น'); message('วิดีโอกำลังเล่น', 'success'); });
+  video.addEventListener('waiting', () => status('กำลังบัฟเฟอร์…'));
+  video.addEventListener('error', () => { if (!state.hls) { status('เล่นไม่สำเร็จ'); message('วิดีโอเล่นไม่ได้ ตรวจ URL, รูปแบบไฟล์, codec, CORS หรือสิทธิ์เข้าถึง', 'error'); } });
+  loadFavorites(); loadSettings(); renderChannels();
+  setInterval(() => { const ch = state.channels.find(c => c.id === state.selectedId); if (ch && state.epgByChannel.size) updateEPG(ch); }, 60000);
+})();
+</script>
+</body>
+</html>
